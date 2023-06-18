@@ -18,15 +18,17 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    // public Product getProduct(int id) {
-       
-    // }
 
-    final static Logger Log = LoggerFactory.getLogger(ProductService.class);
+    final static Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
     public List<Product> getProducts(){
         createDummyProduct();
-        Log.info("Dummy Prod Creaated");
+        LOGGER.info("Dummy Prod Created");
         return productRepository.findAll();
+    }
+
+     public Product getProductById(Integer id){
+        LOGGER.info("Getting product for id :"+id);
+        return productRepository.findById(id).get();
     }
 
 

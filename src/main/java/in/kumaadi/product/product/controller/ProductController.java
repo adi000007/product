@@ -1,10 +1,13 @@
 package in.kumaadi.product.product.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import in.kumaadi.product.product.model.Product;
 import in.kumaadi.product.product.service.ProductService;
 
 @RestController
@@ -15,7 +18,14 @@ public class ProductController {
 
 
     @GetMapping("/product/{id}")
-    public String getProduct(@PathVariable int id){
-        return productService.getProduct(id);
+    public Product getProductById(@PathVariable int id){
+        
+        return productService.getProductById(id);
+    }
+
+    @GetMapping("/products")
+    public List<Product> getProduct(){
+        
+        return productService.getProducts();
     }
 }
