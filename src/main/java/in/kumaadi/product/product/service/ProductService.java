@@ -31,6 +31,11 @@ public class ProductService {
         return productRepository.findById(id).get();
     }
 
+    public Product createProduct(Product product){
+        LOGGER.info("Creating new product" + product);
+        return productRepository.save(product);
+    }
+
 
     public void createDummyProduct()
 	{
